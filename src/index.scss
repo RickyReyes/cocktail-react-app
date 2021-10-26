@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;700&display=swap');
+
+
+$clr-primary-200: #ffe4e8;
+$clr-primary-400: pink;
+$clr-primary-600: rgb(254, 117, 140);
+$clr-primary-900: red;
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Hind;
+}
+
+body {
+    background: $clr-primary-200;
+    width: 100%;
+}
+
+h1 {
+    color: red;
+    text-align: center;
+}
+
+.top-flex {
+    height: 50vh;
+    display: grid;
+    grid-template-columns: 27.5% 72.5%;
+    gap: .5rem;
+}
+
+.categories {
+    display: block;
+    position: relative;
+    overflow: scroll;
+    .category {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        padding: 1rem;
+        border-bottom: 1px solid rgb(255, 228, 232);;
+        border-right: 1px solid $clr-primary-200;
+        cursor: pointer;
+        background-color: white;
+        color: $clr-primary-600;
+        font-weight: bold;
+    }
+    .category:hover {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+}
+
+.options {
+    display: flex;
+    align-items: start;
+    justify-content: flex-start;
+    height: max-content;
+    list-style-type: none;
+    flex-wrap: wrap;
+    flex-shrink: 1;
+    margin-right: 1rem;
+    .option {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        border-radius: 20px;
+        margin: .25rem;
+        height: 2rem;
+        color: white;
+        font-weight: bold;
+        background: rgb(254, 117, 140);
+    }
+    .option:hover {
+        color: white;
+        background: red;
+        cursor: pointer;
+    }
+    .spirit {
+        background-color: rgb(71, 71, 255);
+    }
+    .spirit:hover {
+        background-color: rgb(29, 29, 252);
+    }
+
+    .liqueur {
+        background-color: rgb(0, 133, 76);
+    }
+    .liqueur:hover {
+        background-color: rgb(0, 96, 54);
+    }
+
+    .amaro {
+        background-color: rgb(155, 72, 0);
+    }
+    .amaro:hover {
+        background-color: rgb(87, 41, 0);
+    }
+
+    .juice {
+        background-color: rgb(255, 206, 80)
+    }
+    .juice:hover {
+        background-color: rgb(255, 184, 6)
+    }
+
+    .bitter {
+        background-color: rgb(255, 206, 80)
+    }
+    .bitter:hover {
+        background-color: rgb(255, 184, 6)
+    }
+}
