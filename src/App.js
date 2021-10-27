@@ -1,51 +1,91 @@
 import React from 'react';
 import Categories from './components/Categories';
 import Options from './components/Options';
+import Selections from './components/Selections';
+import Option from './components/Option';
 
-const categoriesObj = {
-  spirits: ["absinthe", "gin", "vodka", "rum", "bourbon", "rye whiskey", "scotch", "cognac", "tequila", "mezcal"],
-  liqueurs: ["aperol", "campari", "cointreau",  "creme de cassis", "creme de violette", "st. germain"],
-  vermouth: ["dry vermouth", "sweet vermouth"],
-  amari: ["amaro nonino", "amaro ramazzotti", "amaro montenegro"],
-  juices: ["cranberry juice", "grapefruit juice", "lemon juice", "lime juice", "orange juice", "pineapple juice"],
-  syrups: ["agave syrup", "orgeat", "simple syrup"],
-  bubbles: ["prosecco", "soda water", "coke", "tonic"],
-  bitters: ["angostura bitters", "chocolate bitters", "spicy bitters", "orange bitters", "peychaud's bitters"],
-  garnishes: ["orange peel", "lemon peel", "cherry garnish"],
-  miscellaneous: ["egg", "egg white"]
-}
-
-const spirits = ["absinthe", "gin", "vodka", "rum", "bourbon", "rye whiskey", "scotch", "cognac", "tequila", "mezcal"];
-const liqueurs = ["aperol", "campari", "cointreau",  "creme de cassis", "creme de violette", "st. germain"];
-const vermouth = ["dry vermouth", "sweet vermouth"];
-const amari = ["amaro nonino", "amaro ramazzotti", "amaro montenegro"];
-const juices = ["cranberry juice", "grapefruit juice", "lemon juice", "lime juice", "orange juice", "pineapple juice"];
-const syrups = ["agave syrup", "orgeat", "simple syrup"];
-const bubbles = ["prosecco", "soda water", "coke", "tonic"]
-const bitters = ["angostura bitters", "chocolate bitters", "spicy bitters", "orange bitters", "peychaud's bitters"];
-const garnishes = ["orange peel", "lemon peel", "cherry garnish"];
-const miscellaneous = ["egg", "egg white"];
+const categoriesArr = {
+  spirits: {
+    name: "spirits",
+    items: ["absinthe", "gin", "vodka", "rum", "bourbon", "rye whiskey", "scotch", "cognac", "tequila", "mezcal"],
+    color: 'navy'
+  },
+    liqueurs: {
+    name: "liqueurs",
+    items: ["aperol", "campari", "cointreau",  "creme de cassis", "creme de violette", "st. germain"],
+    color: 'coral'
+  },
+  vermouth: {
+    name: "vermouth", 
+    items: ["dry vermouth", "sweet vermouth"],
+    color: 'purple'
+  },
+  amari: {
+    name: "amari", 
+    items: ["amaro nonino", "amaro ramazzotti", "amaro montenegro"],
+    color: 'brown'
+  },
+  juices: {
+    name: "juices",
+    items: ["cranberry juice", "grapefruit juice", "lemon juice", "lime juice", "orange juice", "pineapple juice"],
+    color: 'green'
+  },
+  syrups: {
+    name: "syrups", 
+    items: ["agave syrup", "orgeat", "simple syrup"],
+    color: 'orange'
+  },
+  bubbles: {
+    name: "bubbles", 
+    items: ["prosecco", "soda water", "coke", "tonic"],
+    color: 'magenta'
+  },
+  bitters: {
+    name: "bitters", 
+    items: ["angostura bitters", "chocolate bitters", "spicy bitters", "orange bitters", "peychaud's bitters"],
+    color: 'tan'
+  },
+  garnishes: {
+    name: "garnishes", 
+    items: ["orange peel", "lemon peel", "cherry garnish"],
+    color: 'blue'
+  },
+  miscellaneous: {
+    name: "miscellaneous", 
+    items: ["egg", "egg white"],
+    color: 'teal'
+  }
+};
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentCategory: spirits
+      // initialize with spirits rendered.
+      currentCategory: Object.keys(categoriesArr)[0] 
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(e) {
     this.setState({
-      currentCategory: categoriesObj[e.target.innerText]
+      currentCategory: e.target.innerText
     });
   }
+
+
   render() {
     return (
       <div className="App">
         <div className="top-flex">
-          <Categories listOfCategories={Object.keys(categoriesObj)}handleClick={this.handleClick} />
-          <Options category={this.state.currentCategory} />
+          <Categories listOfCategories={categoriesArr}
+                      handleClick={this.handleClick} />
+          <Options listOfCategories={categoriesArr} 
+                  category={this.state.currentCategory} 
+                  onClick={this.selectOption} />
+        </div>
+        <div className="bottom-flex">
+          <Selections />
         </div>
       </div>
     );

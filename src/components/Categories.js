@@ -6,14 +6,17 @@ class Categories extends React.Component {
     }
     
     render() {
+        let categoriesArr = this.props.listOfCategories;
+        let categoryKeys = Object.keys(categoriesArr);
+
         return (
             <ul className="categories">
-                {categories.map((item, idx) => 
+                {categoryKeys.map((keyName, idx) => 
                     <li key={idx}
                     className="category"
-                    style={{color: item.color}}
+                    style={{color: categoriesArr[categoryKeys[idx]].color}}
                     onClick={this.props.handleClick}>
-                        {item.categoryName}
+                        {keyName}
                     </li>
                 )}
             </ul>
