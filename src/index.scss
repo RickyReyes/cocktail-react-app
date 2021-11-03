@@ -13,6 +13,11 @@ $clr-primary-900: red;
     font-family: Hind;
 }
 
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
 body {
     background: $clr-primary-200;
     width: 100%;
@@ -24,21 +29,23 @@ h1 {
 }
 
 .top-flex {
-    height: 50vh;
+    height: 100%;
     display: grid;
     grid-template-columns: 27.5% 72.5%;
     gap: .5rem;
+    // overflow: scroll;
 }
 
 .categories {
     display: block;
     position: relative;
     overflow: scroll;
+    height: 40vh;
     .category {
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 18px;
+        font-size: 20px;
         padding: 1rem;
         border-bottom: 1px solid rgb(255, 228, 232);;
         border-right: 1px solid $clr-primary-200;
@@ -57,11 +64,14 @@ h1 {
     display: flex;
     align-items: start;
     justify-content: flex-start;
+    align-content: flex-start;
     height: max-content;
     list-style-type: none;
     flex-wrap: wrap;
     flex-shrink: 1;
     margin-right: 1rem;
+    height: 40vh;
+    overflow: scroll;
     .option {
         display: flex;
         align-items: center;
@@ -114,3 +124,49 @@ h1 {
         background-color: rgb(255, 184, 6)
     }
 }
+
+.selections {
+    display: flex;
+    align-items: start;
+    justify-content: flex-start;
+    align-content: flex-start;
+    height: max-content;
+    list-style-type: none;
+    flex-wrap: wrap;
+    flex-shrink: 1;
+    margin: 0.5rem;
+    height: 60vh;
+    overflow: scroll;
+
+    .selection {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        border-radius: 20px;
+        margin: .25rem;
+        height: 2rem;
+        color: white;
+        font-weight: bold;
+        background: rgb(254, 117, 140);
+        position: relative;
+        cursor: pointer;
+    }
+
+    .selection::after {
+        content: '⁠—';
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: red;
+        top: -2px;
+        right: -2px;
+        position: absolute;
+        
+    }
+}
+

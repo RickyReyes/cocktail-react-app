@@ -8,23 +8,32 @@ class Options extends React.Component {
     }
     
     render() {
-        let clickedCategory = this.props.category;
-        let categoriesArr = this.props.listOfCategories;
+        let currentCategory = this.props.currentCategory;
+        let mainObj = this.props.mainObj;
 
         // we need to map through an array, not an object.
-        let categoryKeys = Object.keys(categoriesArr); 
+        let categories = Object.keys(mainObj); 
 
         // the object of the category.
-        let categoryObj = categoriesArr[clickedCategory];
+        let categoryObj = mainObj[currentCategory];
+
+        // the items for the given category, sorted alphabetically.
+        let sortedItems = categoryObj.items.sort();
         
         return (
             <ul className="options">
-                {categoryObj.items.map((keyName, idx) => {
+                {sortedItems.map((keyName, idx) => {
                     return (
-                        <Option key={idx} requiredKey={idx} className="option" style={{backgroundColor: categoryObj.color}} keyName={keyName} 
-                        categoryObj= {categoryObj} />
+                        <Option key={idx} 
+                                requiredKey={idx} 
+                                className="option" 
+                                style={{backgroundColor: categoryObj.color}} 
+                                keyName={keyName} 
+                                categoryObj= {categoryObj} 
+                                addItem={this.props.addItem}
+                                removeItem={this.props.removeItem} 
+                                mainList= {this.props.mainList} />
                     )
-
                 })}
             </ul>
         )
